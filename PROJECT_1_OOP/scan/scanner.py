@@ -38,11 +38,11 @@ class PortScanner:
                 if code == 0:
                     result.append(p)
                     if self.verbose:
-                        print(f"  [+] Port {p} terbuka\n\n")
+                        print(f"  [+] Port {p} open!\n\n")
                         time.sleep(1)
                 else:
                     if self.verbose:
-                        print(f"  [-] Port {p} tertutup")
+                        print(f"  [-] Port {p} closed!")
             except KeyboardInterrupt:
                 print("\n[!] Dibatalkan oleh user")
                 break

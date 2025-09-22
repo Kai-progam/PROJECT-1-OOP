@@ -98,16 +98,17 @@ def save_result(target_ip, port, open_ports):
             
             cursor.execute(insert_port_scan_result,(port_scan_result_id,port_scan_id,p,port_status,service))
 
-        # insert into culnerabilities
-        insert_vulnerabilities = "INSERT INTO vulnerabilities(vuln_id,port_scan_result_id,vulnerability_name,descriptions,severity) VALUES (%s,%s,%s,%s,%s)"
-        for p in port:
+        # insert into vulnerabilities
+            insert_vulnerabilities = "INSERT INTO vulnerabilities(vuln_id,port_scan_result_id,vulnerability_name,descriptions,severity) VALUES (%s,%s,%s,%s,%s)"
             vuln_id = f"V{random.randint(1,9999)}"
             if port_status == "open" and p in VULN_RULES:
                 rules = VULN_RULES[p]
                 for (vname,vdesc,vsev) in rules:
-                    cursor.execute(insert_vulnerabilities,(vuln_id,port_scan_result_id,vname, vdesc, vsev))
+                    cursor.execute(insert_vulnerabilities, (vuln_id,port_scan_result_id,vname, vdesc, vsev))
             elif port_status == "closed":
-                cursor.execute(insert_vulnerabilities,(vuln_id,port_scan_result_id,"Unknown","Unknown","Unknown"))
+                cursor.execute(insert_vulnerabilities, (vuln_id,port_scan_result_id,"Unknown","Unknown","Unknown"))
+            else:
+                print("     [~]Sorry for the Problem...")
             
         # saved into db
         connect_db.Mydb.commit()

@@ -18,7 +18,7 @@ def main():
             connect_db.connect()
             time.sleep(0.5)
             print("----------------------")
-            input1 = int(input("WELCOME TO PORT SCANNING TOOLS \n1. Input IP for Scan \n2. Check Last Scan  \n3. Check Data History  \n4.Exit \nInput: "))
+            input1 = int(input("WELCOME TO PORT SCANNING TOOLS \n1. Input IP for Scan \n2. Check Open Port Data  \n3. Check Data History \n4. Delete Data  \n5. Update Data\n6. Exit \nInput: "))
             if input1 == 1:
                 try:
                     ip = (input("Input IP Adrress: "))
@@ -38,10 +38,19 @@ def main():
                 except (ValueError,AttributeError) as e:
                     print(f"\nYou have mistake on {e}")
             elif input1 == 2:
-                continue
+                connect_db.check_open_port_data()        
             elif input1 == 3:
-                continue
+                connect_db.Check_History()
             elif input1 == 4:
+                connect_db.Check_History()
+                choose = str(input("What ID do you want delete? \nType:"))
+                connect_db.delete_data(choose)
+            elif input1 == 5:
+                connect_db.Check_History()
+                choose = str(input("What ID do you want update? \nType:"))
+                new_ip = new_ip = str(input("Enter new IP Address: "))
+                connect_db.update_data(choose,new_ip)
+            elif input1 == 6:
                 DatabaseManager.close(connect_db)
                 break
             else:
