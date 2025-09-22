@@ -1,0 +1,36 @@
+port,service,vulnerability,description,severity
+20,FTP (data),Plaintext FTP data,FTP transfers data without encryption — credentials and files can be intercepted,High
+21,FTP (control),Plaintext authentication / Anonymous FTP,FTP commonly allows anonymous login or plaintext auth,High
+22,SSH,Weak credentials / outdated version,Brute-force or outdated SSH implementations may be exploited,Medium
+23,Telnet,Plaintext credentials,Telnet sends credentials in plaintext — highly insecure,High
+25,SMTP,Open relay / misconfig,Improperly configured SMTP may allow relaying/spoofing,Medium
+53,DNS,Open zone transfer / amplification,DNS servers with AXFR or misconfig can leak zones or be used in DDoS,High
+67,DHCP,Rogue DHCP server,Rogue DHCP can direct clients to malicious gateways/DNS,High
+68,DHCP,Client-side issue,Potential config issues on clients,Medium
+69,TFTP,Unauthenticated file transfer,TFTP transfers files without auth — can leak configs,High
+79,Finger,Information disclosure,Finger can leak user info on old systems,Low
+80,HTTP,Web app vulnerabilities (XSS/SQLi/dir listing),Many web app issues manifest on HTTP,Medium-High
+88,Kerberos,Ticket replay / misconfig,Kerberos misconfig can compromise authentication,High
+110,POP3,Plaintext auth if no TLS,Credentials may be exposed without TLS,Medium
+111,RPCbind/portmapper,Service enumeration,Exposes RPC services that may be exploitable,Medium
+119,NNTP,Open relay / info leak,NNTP misconfig can leak or be abused,Low-Medium
+123,NTP,Amplification / outdated RCE,NTP can be abused for reflection DDoS or RCE in old versions,High
+137,NetBIOS,Share enumeration / info leak,NetBIOS exposes shares and host info,High
+138,NetBIOS,UDP info leak,NetBIOS over UDP can reveal hostnames/services,High
+139,NetBIOS/SMB,SMB vulnerabilities / info leak,SMB open to internet is high risk,High
+143,IMAP,Plaintext auth if no TLS,Credentials may be exposed,Medium
+161,SNMP,Default community strings / info leakage,Default "public"/"private" reveal device config,High
+194,IRC,Abuse / information leakage,Legacy services may be abused,Low
+179,BGP,Route hijacking risk,BGP misconfig or compromise causes route hijack,Critical
+389,LDAP,Anonymous bind / info leak,LDAP misconfig exposes directory info,Medium-High
+443,HTTPS,Web app vulnerabilities / TLS misconfig,Issues often due to app or TLS settings,Medium-High
+445,SMB,Remote code execution / share exposure,SMB exposed publicly is critical,Critical
+512,rlogin/rsh,Unauthenticated remote access,Legacy remote shells without auth,High
+513,who,Information disclosure,Legacy services leak user info,Low
+514,syslog/rsh,Unauthenticated logging/remote shell,Legacy insecure services,Medium
+631,IPP (printing),Unauthenticated printing / config leak,Exposed printers can leak or print sensitive docs,Low-Medium
+993,IMAPS,TLS misconfig risk,Secure mail depends on valid TLS,Low-Medium
+995,POP3S,TLS misconfig risk,Secure mail depends on valid TLS,Low-Medium
+330,Oracle (example),Service-specific vulnerabilities,Service-specific,Medium
+465,SMTPS,Mail over TLS misconfig,Depends on TLS config,Low-Medium
+587,SMTP (submission),Auth/relay misconfig,Submission port needs proper auth,Medium

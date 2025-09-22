@@ -2,6 +2,8 @@ from db.DB_Manager import DatabaseManager
 from scan.scanner import PortScanner
 import time
 import re
+from db import db_save
+import socket
 
 def main():
     while True:
@@ -22,12 +24,15 @@ def main():
                     ip = (input("Input IP Adrress: "))
                     port_range1 = int(input("Input first port: "))
                     port_range2 = int(input("Input second port: "))
+                    port_fix = list(range(port_range1,port_range2))
                     if port_range1 == port_range2:
                         print("     \n[!]Cannot using same port")
                     elif port_range1 != port_range2:
-                        port_fix = list(range(port_range1,port_range2))
                         run = PortScanner(ip,port_fix)
-                        run.scan_port()
+                        result_total_port = run.scan_port()
+                        db_save.save_result(ip,port_fix,result_total_port)
+
+
                     else:
                         print("     [!] Something wrong in here")
                 except (ValueError,AttributeError) as e:

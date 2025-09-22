@@ -36,14 +36,8 @@ class DatabaseManager():
         time.sleep(0.25)
     def delet_data(self):
 
-        self.cursor.execute
+        self.cursor.execute()
 
-db_name = {
-                "host" : "localhost",
-                "user" : "root",
-                "password" : "admin",
-                "database" : "db_network_scanning_system"
-            }
 
 
 # test conn
